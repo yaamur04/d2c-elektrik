@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>D2C Elektrik | Projelerimiz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* BURAYA PROJELER SAYFASININ CSS'İNİ KOYACAĞIZ */
+
+        body {
+            margin: 0;
+            background: #0F1620;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .projects-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #9BA5B4;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .filter-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 8px 16px;
+            border: 1px solid #394352;
+            border-radius: 20px;
+            background: transparent;
+            color: #9BA5B4;
+            cursor: pointer;
+        }
+
+        .filter-pill.active,
+        .filter-pill:hover {
+            border-color: #F0B429;
+            color: #F0B429;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #18212D;
+            border: 1px solid #303A48;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+         aspect-ratio: 1 / 1;   transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #F0B429;
+        }
+
+        .project-thumb {
+    height: 65%;
+    background: #20293A;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+        .body {
+            padding: 18px;
+        }
+
+        .project-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #F0B429;
+        }
+
+        .project-card h3 {
+            margin: 7px 0;
+        }
+
+        .project-card p {
+            color: #9BA5B4;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @media(max-width:760px) {
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="projects-page">
+
+        <div class="page-title">
+
+            <h1>PROJELERİMİZ</h1>
+
+            <p>D2C Elektrik tarafından gerçekleştirilen projeler</p>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <button class="filter-pill active" data-filter="all">
+                Tümü
+            </button>
+
+            <button class="filter-pill" data-filter="konut">
+                Konut
+            </button>
+
+            <button class="filter-pill" data-filter="ticari">
+                Ticari
+            </button>
+
+            <button class="filter-pill" data-filter="saglik">
+                Sağlık
+            </button>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <!-- KONUT -->
+
+            <div class="project-card" data-category="konut">
+
+                <div class="project-thumb">
+
+                    <img src="images/konut1.jpg" alt="Konut projesi">
+
+                </div>
+
+                <div class="body">
+
+                    <span class="project-tag">
+                        KONUT
+                    </span>
+
+                    <h3>
+                        Örnek Konut Projesi
+                    </h3>
+
+                    <p>
+                        Elektrik tesisatı ve aydınlatma uygulaması.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TİCARİ -->
+
+            <div class="project-card" data-category="ticari">
+
+                <div class="project-thumb">
+
+                    <img src="images/ticari1.jpg" alt="Ticari proje">
+
+                </div>
+
+                <div class="body">
+
+                    <span class="project-tag">
+                        TİCARİ
+                    </span>
+
+                    <h3>
+                        Örnek Ticari Proje
+                    </h3>
+
+                    <p>
+                        Elektrik ve aydınlatma uygulaması.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAĞLIK -->
+
+            <div class="project-card" data-category="saglik">
+
+                <div class="project-thumb">
+
+                    <img src="images/saglik1.jpg" alt="Sağlık projesi">
+
+                </div>
+
+                <div class="body">
+
+                    <span class="project-tag">
+                        SAĞLIK
+                    </span>
+
+                    <h3>
+                        Örnek Sağlık Projesi
+                    </h3>
+
+                    <p>
+                        Elektrik ve güç sistemleri uygulaması.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+<!-- PROJE MODALI -->
+
+<div id="projectModal" class="project-modal">
+
+    <div class="project-modal-content">
+
+        <button class="modal-close" onclick="closeProject()">×</button>
+
+        <div class="modal-image">
+            <img id="modalImage" src="" alt="">
+        </div>
+
+        <div class="modal-info">
+
+            <span id="modalCategory" class="project-tag"></span>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDescription"></p>
+
+            <div class="project-details">
+
+                <div>
+                    <span>LOKASYON</span>
+                    <strong id="modalLocation"></strong>
+                </div>
+
+                <div>
+                    <span>HİZMET</span>
+                    <strong id="modalService"></strong>
+                </div>
+
+                <div>
+                    <span>SÜRE</span>
+                    <strong id="modalDuration"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    </main>
+
+
+    <script>
+
+        const filterButtons = document.querySelectorAll(".filter-pill");
+        const projectCards = document.querySelectorAll(".project-card");
+
+        filterButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const selectedFilter = button.dataset.filter;
+
+                filterButtons.forEach(function(otherButton) {
+                    otherButton.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+
+                projectCards.forEach(function(card) {
+
+                    const category = card.dataset.category;
+
+                    if (
+                        selectedFilter === "all" ||
+                        category === selectedFilter
+                    ) {
+
+                        card.style.display = "";
+
+                    } else {
+
+                        card.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D2C Elektrik | Taahhüt ve Montaj Hizmetleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2b234f;
+    --surface:#1e2e47;
+    --card:#a3853a;
+    --card-text:#141821;
+    --line:#2A3646;
+    --text:#cfd4db;
+    --text-dim:#d1d8e4;
+    --amber:#9a7d32;
+    --radius:3px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.55;}
+  h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.02em; line-height:1.05;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.15em; color:var(--amber); text-transform:uppercase; margin-bottom:14px;}
+  .section-head{text-align:center; max-width:600px; margin:0 auto 52px;}
+  .section-head h2{font-size:clamp(26px,4vw,38px);}
+  .section-head p{color:var(--text-dim); font-size:15px; margin-top:12px;}
+
+  /* header */
+  header{position:sticky; top:0; z-index:50; background:rgba(15,22,32,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1120px; margin:0 auto;}
+  .logo{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:21px; letter-spacing:.03em;}
+  .logo span{color:var(--amber);}
+  .nav-links{display:flex; gap:26px; font-size:14px; color:var(--text-dim);}
+  .nav-links a:hover{color:var(--amber);}
+  .nav-cta{background:var(--amber); color:#0F1620; font-weight:600; font-size:14px; padding:10px 18px; border-radius:var(--radius);}
+
+  /* hero */
+  .hero{text-align:center; padding:110px 0 90px;}
+  .hero h1{font-size:clamp(36px,6vw,60px); max-width:760px; margin:0 auto 18px;}
+  .hero h1 span{color:var(--amber);}
+  .hero .lead{color:var(--text-dim); font-size:16px; max-width:480px; margin:0 auto 34px;}
+  .hero-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{padding:14px 26px; border-radius:var(--radius); font-weight:600; font-size:15px; border:1px solid var(--line); cursor:pointer; display:inline-block;}
+  .btn-primary{background:var(--amber); color:#0F1620; border-color:var(--amber);}
+  .btn-secondary{background:transparent; color:var(--text);}
+
+  /* HİZMETLER */
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.service-card{
+  background:var(--card);
+  color:var(--card-text);
+  padding:26px 22px;
+  border-radius:var(--radius);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.service-card:hover{
+  transform:translateY(-4px);
+}
+
+.service-card .ic{
+  font-size:22px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.service-card h3{
+  font-size:17px;
+  text-transform:none;
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.service-card p{
+  font-size:13px;
+  color:#5B6472;
+  margin-bottom:14px;
+}
+
+/* Açıklama ilk gizli */
+.service-card .details{
+  display:none;
+  padding-top:12px;
+  border-top:1px solid #E2DFD6;
+  margin-top:12px;
+  font-size:13px;
+  color:#5B6472;
+  line-height:1.6;
+}
+
+/* Kart açıldığında */
+.service-card.open .details{
+  display:block;
+}
+
+.service-card .more{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:#141821;
+  border-top:1px solid #E2DFD6;
+  padding-top:12px;
+  display:block;
+}
+
+.service-card.open .more{
+  border-top:none;
+}
+  /* süreç */
+  .process{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .process-step{flex:1; min-width:140px; text-align:center;}
+  .process-step .n{width:36px; height:36px; border-radius:50%; border:1px solid var(--amber); color:var(--amber); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-family:'JetBrains Mono',monospace; font-size:13px;}
+  .process-step h4{font-size:14px; font-weight:600; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:5px;}
+  .process-step p{font-size:12px; color:var(--text-dim);}
+
+  /* projeler */
+  .filter-row{
+    display:flex; 
+    gap:10px; 
+    justify-content:center; 
+    flex-wrap:wrap; 
+    margin-bottom:32px;
+  }
+  .filter-pill{
+    font-family:'JetBrains Mono',monospace; 
+    font-size:12px; 
+    padding:8px 16px;
+    border:1px solid var(--line); 
+    border-radius:20px; 
+    color:var(--text-dim);
+    cursor:pointer;
+    transition:0.3s;
+    background:transparent;
+  }
+  .filter-pill:hover{
+  border-color:var(--amber);
+  color:var(--amber);
+}
+  .filter-pill.active{
+  background:var(--amber);
+  border-color:var(--amber);
+  color:#0F1620;
+  }
+ 
+  /*proje kartlarıp */
+  
+ .projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+  .project-card{
+    background:var(--surface); 
+    border:1px solid var(--line); 
+    border-radius:var(--radius); 
+    overflow:hidden;
+    transition:transform 0.3s ease, border-color 0.3s ease;
+    cursor:pointer;
+  }
+  .project-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--amber);
+}
+  .project-more{
+  display:block;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  color:var(--amber);
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+}
+  /* proje görseli*/
+  .project-thumb {
+    height: 180px;
+    background: #20293A;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+  /*kart içeriği*/
+  .project-card .body{
+    padding:16px 18px;
+  }
+  .project-tag{
+    font-family:'JetBrains Mono',monospace;
+     font-size:11px; 
+     color:var(--amber); 
+     text-transform:uppercase; 
+     letter-spacing:.1em;}
+
+  .project-card h3{
+    font-size:18px; 
+    text-transform:none; 
+    font-family:'Inter',sans-serif; 
+    font-weight:600; 
+    margin:6px 0 6px;
+  }
+  .project-card p{
+    font-size:13px; 
+    color:var(--text-dim);
+    line-height:1.6;
+  }
+  .projects-more {
+    display:flex;
+    justify-content:center;
+    margin-top:28px;
+}
+
+.projects-more-btn {
+    display:inline-block;
+    padding:12px 22px;
+    border:1px solid var(--amber);
+    border-radius:var(--radius);
+    color:var(--amber);
+    text-decoration:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    transition:0.3s ease;
+}
+
+.projects-more-btn:hover {
+    background:var(--amber);
+    color:#0F1620;
+    transform:translateY(-2px);
+}
+
+  
+
+  /* hakkımızda */
+  .about-box{max-width:640px; margin:0 auto; text-align:center;}
+  .about-box p{color:var(--text-dim); font-size:15px; margin-bottom:28px;}
+  .about-list{display:flex; gap:24px; justify-content:center; flex-wrap:wrap; font-size:14px;}
+  .about-list li{list-style:none; display:flex; align-items:center; gap:8px; color:var(--text-dim);}
+  .about-list li::before{content:"—"; color:var(--amber);}
+
+  /* neden d2c */
+  .why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;}
+  .why-card{background:var(--card); color:var(--card-text); padding:24px 20px; border-radius:var(--radius);}
+  .why-card .check{color:#1E7A4C; font-weight:700; margin-bottom:10px; display:block;}
+  .why-card h4{font-size:15px; font-weight:600; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:6px;}
+  .why-card p{font-size:13px; color:#5B6472;}
+
+  /* teklif */
+  .quote-box{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:36px; max-width:620px; margin:0 auto;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  label{display:block; font-size:11px; color:var(--text-dim); margin-bottom:6px; font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.05em;}
+  input, select, textarea{width:100%; background:var(--bg); border:1px solid var(--line); color:var(--text); padding:11px 13px; border-radius:var(--radius); font-family:'Inter',sans-serif; font-size:14px;}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--amber); outline-offset:1px; border-color:var(--amber);}
+  .full{grid-column:1/-1;}
+  .quote-box button{width:100%; margin-top:4px;}
+  .whatsapp-alt{display:block; text-align:center; margin-top:16px; font-size:13px; color:var(--text-dim);}
+  .whatsapp-alt a{color:var(--amber); font-weight:600;}
+
+  .quote-box button {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+  /* Hizmet seçenekleri */
+ .service-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:4px;
+}
+
+.service-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  cursor:pointer;
+  transition:0.2s ease;
+  color:var(--text);
+  font-size:14px;
+}
+
+.service-option:hover{
+  border-color:var(--amber);
+}
+
+.service-option input{
+  width:17px;
+  height:17px;
+  accent-color:var(--amber);
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.service-option:has(input:checked){
+  border-color:var(--amber);
+  background:#202B3A;
+}
+
+  /* hizmet bölgesi */
+  .zone-box{display:flex; gap:36px; align-items:center; flex-wrap:wrap;}
+  .zone-box .txt{flex:1; min-width:240px;}
+  .zone-box .txt p{color:var(--text-dim); font-size:15px;}
+  .zone-map{flex:1; min-width:240px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); min-height:180px; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:13px; text-align:center; padding:20px;}
+
+  /* referanslar */
+  .partners-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .partner-chip{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 22px; font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-dim);}
+
+  /* sss */
+  .faq{max-width:680px; margin:0 auto; display:grid; gap:10px;}
+  .faq details{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;}
+  .faq summary{cursor:pointer; font-weight:600; font-size:15px; list-style:none;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+"; float:right; color:var(--amber);}
+  .faq details[open] summary::after{content:"–";}
+  .faq p{color:var(--text-dim); font-size:14px; margin-top:10px;}
+
+  /* iletişim */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .contact-list{display:grid; gap:16px;}
+  .contact-item{display:flex; gap:14px; align-items:center; padding:15px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);}
+  .contact-item .ic{color:var(--amber); font-family:'JetBrains Mono',monospace; font-size:17px;}
+  .contact-item small{display:block; color:var(--text-dim); font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-family:'JetBrains Mono',monospace;}
+  .map-box{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); min-height:100%; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:13px; padding:20px; text-align:center;}
+
+  footer{border-top:1px solid var(--line); padding:30px 0; text-align:center; color:var(--text-dim); font-size:13px;}
+.menu-toggle{
+  display:none;
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--text);
+  font-size:22px;
+  padding:6px 10px;
+  cursor:pointer;
+  border-radius:var(--radius);
+}
+  @media (max-width:760px){
+    .nav-links{display:none;}
+   
+    .nav-links.active{ 
+    display:flex;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    gap:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:10px 24px;
+    }
+    .nav-links.active a{padding:12px 0;}
+    .menu-toggle{display:block;}
+    .nav-cta{display:none;}
+  
+    .form-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .process{flex-direction:column;}
+    .zone-box{flex-direction:column;}
+    .service-options{ grid-template-columns:1fr;}
+     }
+
+/* PROJE MODALI */
+
+.project-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.project-modal.active{
+  display:flex;
+}
+
+.project-modal-content{
+  position:relative;
+  width:min(850px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+
+.modal-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--bg);
+  color:var(--text);
+  font-size:25px;
+  cursor:pointer;
+  z-index:2;
+}
+
+.modal-close:hover{
+  color:var(--amber);
+  border-color:var(--amber);
+}
+
+.modal-image{
+  width:100%;
+  height:380px;
+  background:#20293A;
+}
+
+.modal-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.modal-info{
+  padding:30px;
+}
+
+.modal-info h2{
+  font-size:32px;
+  margin:8px 0 12px;
+}
+
+.modal-info p{
+  color:var(--text-dim);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.project-details{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:25px;
+}
+
+.project-details div{
+  padding:14px;
+  background:var(--bg);
+  border:1px solid var(--line);
+}
+
+.project-details span{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  color:var(--text-dim);
+  margin-bottom:5px;
+}
+
+.project-details strong{
+  font-size:13px;
+  font-weight:500;
+}
+
+@media(max-width:760px){
+
+  .modal-image{
+    height:240px;
+  }
+
+  .modal-info{
+    padding:22px;
+  }
+
+  .modal-info h2{
+    font-size:26px;
+  }
+
+  .project-details{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">D2C <span>ELEKTRİK</span></div>
+    <nav class="nav-links">
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#projeler">Projeler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#sss">SSS</a>
+      <a href="#iletisim">İletişim</a>
+      <a href="#teklif">Teklif Al</a>
+    </nav>
+    <a href="#teklif" class="nav-cta">Teklif Al</a>
+    <button class="menu-toggle" aria-label="Menüyü aç">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Projelendirme · Montaj · Devreye Alma · Bakım</div>
+      <h1>D2C <span>Elektrik</span> — Taahhüt ve Montaj Hizmetleri</h1>
+      <p class="lead">Konut, ticari yapılar ve endüstriyel tesisler için güvenilir elektrik çözümleri.</p>
+      <div class="hero-actions">
+        <a href="#teklif" class="btn btn-primary">Teklif Al</a>
+        <a href="https://wa.me/905000000000" class="btn btn-secondary">WhatsApp'tan Ulaş</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİZMETLER -->
+  <section id="hizmetler">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Hizmetlerimiz</div>
+        <h2>Uçtan Uca Elektrik Çözümleri</h2>
+      </div>
+     
+      <div class="services-grid">
+       
+        <div class="service-card">
+       
+          <span class="ic">⚡</span>
+        
+          <h3>AG/OG Tesisat</h3> <p></p>
+        <div class="details">Alçak ve orta gerilim elektrik tesisatlarının projelendirilmesi, kurulumu ve devreye alınması. 
+
+        </div>
+     <span class="more">Detaylı İncele →</span>
+      </div>
+        
+        <div class="service-card">
+
+        <span class="ic">🔌</span> <h3>Pano İmalatı & Montaj</h3>  <p></p>
+       <div class="details">Elektrik dağıtım ve kontrol panolarının ihtiyaca uygun imalatı ve montajı.
+     </div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+       
+        <div class="service-card">
+          <span class="ic">🧰</span> <h3>Kablolama & Kablo Tavası</h3>  <p></p>
+       <div class="details"> Enerji ve kontrol kablolama sistemleri ile kablo tavalarının kurulumu.
+     </div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+          
+          <div class="service-card">
+          <span class="ic">💡</span>
+          <h3>Aydınlatma</h3><p></p>
+          <div class="details"> İç ve dış mekân aydınlatma sistemlerinin projelendirilmesi ve montajı</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+          
+          <div class="service-card">
+          <span class="ic">🌍</span>
+          <h3>Topraklama</h3>
+         <div class="details"> Elektrik tesisatları için topraklama sistemlerinin kurulumu, ölçümü ve kontrolü.</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+         
+          <div class="service-card">
+          <span class="ic">🔋</span>
+          <h3>Jeneratör & UPS</h3>
+       <div class="details"> Kesintisiz ve yedek güç sistemlerinin kurulumu ve devreye alınması. </div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+          
+         <div class="service-card">
+          <span class="ic">📡</span>
+          <h3>Zayıf Akım</h3>
+        <div class="details"> Haberleşme, güvenlik ve otomasyon sistemleri için altyapı çözümleri.</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+          <div class="service-card">
+          <span class="ic">🔥</span>
+          <h3>Yangın Alarmı</h3>
+          <div class="details"> Yangın algılama ve alarm sistemlerinin kurulumu ve devreye alınması.</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+         
+      <div class="service-card">
+        <span class="ic">📹</span>
+        <h3>Kamera & Network</h3>
+        <div class="details"> Güvenlik kamerası ve veri ağı altyapılarının kurulumu.</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+        
+      <div class="service-card">
+        
+        <span class="ic">📐</span>
+        <h3>Proje & Uygulama</h3>
+        <div class="details">Elektrik tesisat projelerinin hazırlanması ve saha uygulamalarının gerçekleştirilmesi.</div>
+        <span class="more">Detaylı İncele →</span>
+      </div>
+   
+    </div>
+  </section>
+
+  <!-- SÜREÇ -->
+  <section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Nasıl Çalışıyoruz</div>
+        <h2>Keşiften Bakıma</h2>
+      </div>
+      <div class="process">
+        <div class="process-step"><div class="n">1</div><h4>Keşif</h4><p>İhtiyaçlarınızı ve mevcut yapıyı değerlendiriyoruz.</p></div>
+        <div class="process-step"><div class="n">2</div><h4>Teklif</h4><p>Kapsama uygun, şeffaf bir teklif hazırlıyoruz.</p></div>
+        <div class="process-step"><div class="n">3</div><h4>Projelendirme</h4><p>Uygulama için gerekli elektrik projelerini hazırlıyoruz.</p></div>
+        <div class="process-step"><div class="n">4</div><h4>Montaj</h4><p>Sistemin kurulum ve montajını gerçekleştiriyoruz.</p></div>
+        <div class="process-step"><div class="n">5</div><h4>Devreye Alma</h4><p>Sistemi test ederek çalışır şekilde teslim ediyoruz.</p></div>
+        <div class="process-step"><div class="n">6</div><h4>Bakım</h4><p>İhtiyaç halinde bakım ve teknik destek sağlıyoruz.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJELER -->
+  <section id="projeler">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Referanslarımız</div>
+        <h2>Projelerimiz</h2>
+      </div>
+    <div class="filter-row">
+
+    <button class="filter-pill active" data-filter="all">
+        Tümü
+    </button>
+
+    <button class="filter-pill" data-filter="konut">
+        Konut
+    </button>
+
+    <button class="filter-pill" data-filter="ticari">
+        Ticari
+    </button>
+
+    <button class="filter-pill" data-filter="saglik">
+        Sağlık
+    </button>
+
+</div>
+      
+
+<div class="projects-grid">
+
+  <!-- KONUT 1 -->
+  <div class="project-card" data-category="konut" onclick="openProject('konut1')">
+    <div class="project-thumb">
+      <img src="images/konut1.jpg" alt="Konut elektrik projesi">
+    </div>
+    <div class="body">
+      <span class="project-tag">Konut</span>
+      <h3>Örnek Konut Projesi</h3>
+      <p>Elektrik tesisatı, aydınlatma ve pano montajı.</p>
+      <span class="project-more">Projeyi İncele →</span>
+    </div>
+  </div>
+
+  <!-- KONUT 2 -->
+  <div class="project-card" data-category="konut" onclick="openProject('konut1')">
+    <div class="project-thumb">
+      <img src="images/konut1.jpg" alt="Konut elektrik projesi">
+    </div>
+    <div class="body">
+      <span class="project-tag">Konut</span>
+      <h3>Örnek Konut Projesi</h3>
+      <p>Elektrik tesisatı, aydınlatma ve pano montajı.</p>
+      <span class="project-more">Projeyi İncele →</span>
+    </div>
+  </div>
+
+  <!-- TİCARİ -->
+  <div class="project-card" data-category="ticari" onclick="openProject('ticari1')">
+    <div class="project-thumb">
+      <img src="images/ticari1.jpg" alt="Ticari elektrik projesi">
+    </div>
+    <div class="body">
+      <span class="project-tag">Ticari</span>
+      <h3>Örnek Ticari Projesi</h3>
+      <p>Dükkan/ticari alan elektrik tesisatı ve aydınlatma uygulaması.</p>
+      <span class="project-more">Projeyi İncele →</span>
+    </div>
+  </div>
+
+  <!-- SAĞLIK -->
+  <div class="project-card" data-category="saglik" onclick="openProject('saglik1')">
+    <div class="project-thumb">
+      <img src="images/saglik1.jpg" alt="Sağlık elektrik projesi">
+    </div>
+    <div class="body">
+      <span class="project-tag">Sağlık</span>
+      <h3>Örnek Sağlık Projesi</h3>
+      <p>Kesintisiz güç ve topraklama sistemleri kurulumu.</p>
+      <span class="project-more">Projeyi İncele →</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="projects-more">
+  <a href="projeler.html" class="projects-more-btn">
+    Tüm Projeleri Gör →
+  </a>
+</div>
+
+</div>
+</section>
+
+
+  <!-- HAKKIMIZDA -->
+  <section id="hakkimizda" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Hakkımızda</div><h2>Kimiz</h2></div>
+      <div class="about-box">
+        <p>D2C Elektrik olarak, elektrik taahhüt ve montaj alanında güvenilir, güvenli ve sürdürülebilir çözümler sunuyoruz.</p>
+        <ul class="about-list">
+          <li>Deneyim</li>
+          <li>Güvenlik</li>
+          <li>Kaliteli Malzeme</li>
+          <li>Zamanında Teslim</li>
+          <li>Teknik Yetkinlik</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEDEN D2C -->
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Neden D2C?</div><h2>Farkımız</h2></div>
+      <div class="why-grid">
+        <div class="why-card"><span class="check">✓</span><h4>Projeye Özel Çözümler</h4><p>Her projeyi kendi ihtiyaçlarına göre değerlendiriyoruz.</p></div>
+        <div class="why-card"><span class="check">✓</span><h4>Güvenli Uygulama</h4><p>Elektrik tesisatında güvenlik standartlarını ön planda tutuyoruz.</p></div>
+        <div class="why-card"><span class="check">✓</span><h4>Zamanında Teslim</h4><p>Planlanan iş programına uygun ilerliyoruz.</p></div>
+        <div class="why-card"><span class="check">✓</span><h4>Kaliteli Malzeme</h4><p>Uygun ve güvenilir ekipmanlarla çalışıyoruz.</p></div>
+      </div>
+    </div>
+  </section>
+
+     <!-- TEKLİF AL -->
+<section id="teklif" style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+
+  <div class="wrap">
+
+    <div class="section-head">
+      <div class="eyebrow">Teklif Al</div>
+      <h2>Projenizi Anlatın, Size Dönelim</h2>
+    </div>
+
+    <form class="quote-box" id="teklif-form">
+
+      <!-- AD + TELEFON -->
+      <div class="form-row">
+
+        <div>
+          <label for="ad">Ad Soyad</label>
+          <input
+            id="ad"
+            name="ad"
+            type="text"
+            placeholder="Adınız Soyadınız"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="tel">Telefon</label>
+          <input
+            id="tel"
+            name="telefon"
+            type="tel"
+            placeholder="05XX XXX XX XX"
+            required
+          >
+        </div>
+
+      </div>
+
+
+      <!-- E-POSTA + PROJE TÜRÜ -->
+      <div class="form-row">
+
+        <div>
+          <label for="eposta">E-posta</label>
+          <input
+            id="eposta"
+            name="eposta"
+            type="email"
+            placeholder="ornek@eposta.com"
+          >
+        </div>
+
+        <div>
+          <label for="tur">Proje Türü</label>
+
+          <select id="tur" name="proje_turu">
+            <option>Konut</option>
+            <option>Ticari / Dükkan</option>
+            <option>Sağlık</option>
+            <option>Sanayi</option>
+            <option>Diğer</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- HİZMETLER -->
+      <div class="form-row">
+
+        <div class="full">
+
+          <label>İSTENEN HİZMETLER</label>
+
+          <div class="service-options">
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="AG/OG Tesisat">
+              AG/OG Tesisat
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Pano İmalatı & Montaj">
+              Pano İmalatı & Montaj
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Kablolama & Kablo Tavası">
+              Kablolama & Kablo Tavası
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Aydınlatma">
+              Aydınlatma
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Topraklama">
+              Topraklama
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Jeneratör / UPS">
+              Jeneratör / UPS
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Zayıf Akım">
+              Zayıf Akım
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Yangın Alarmı">
+              Yangın Alarmı
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Kamera & Network">
+              Kamera & Network
+            </label>
+
+            <label class="service-option">
+              <input type="checkbox" name="hizmet[]" value="Proje & Uygulama">
+              Proje & Uygulama
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AÇIKLAMA -->
+      <div class="form-row">
+
+        <div class="full">
+
+          <label for="mesaj">Proje Açıklaması</label>
+
+          <textarea
+            id="mesaj"
+            name="mesaj"
+            rows="4"
+            placeholder="Projenizle ilgili kısaca bilgi verin"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <!-- GÖNDER -->
+      <button type="submit" class="btn btn-primary">
+        Teklif Talebini Gönder
+      </button>
+
+      <span class="whatsapp-alt">
+        ya da direkt
+        <a href="https://wa.me/905000000000">
+          WhatsApp'tan yazın →
+        </a>
+      </span>
+
+    </form>
+
+  </div>
+
+</section>
+
+  <!-- HİZMET BÖLGESİ -->
+  <section>
+    <div class="wrap zone-box">
+      <div class="txt">
+        <div class="eyebrow">Hizmet Bölgemiz</div>
+        <h2 style="font-size:clamp(24px,3.5vw,32px); margin-bottom:12px;">Nerede Hizmet Veriyoruz</h2>
+        <p>İstanbul ve çevre illerde hizmet veriyoruz.</p>
+      </div>
+      <div class="zone-map">Google Haritalar embed alanı<br>(iframe ile eklenecek)</div>
+    </div>
+  </section>
+
+  <!-- REFERANSLAR -->
+<section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Referanslar</div>
+      <h2>Müşteri Yorumları</h2>
+      <p>Müşterilerimizin deneyimlerini burada paylaşıyoruz.</p>
+    </div>
+
+  
+
+    <div style="max-width:520px; margin:32px auto 0; padding:20px; border:1px solid var(--line); border-radius:12px;">
+      <h3 style="margin-top:0;">Yorum Bırakın</h3>
+      <form id="yorum-form">
+        <div style="margin-bottom:10px;">
+          <input type="text" id="yorum-isim" placeholder="Adınız / Firma Adı" required
+                 style="width:100%; padding:8px; box-sizing:border-box;">
+        </div>
+        <div style="margin-bottom:10px;">
+          <select id="yorum-puan" style="width:100%; padding:8px;">
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★☆ (4)</option>
+            <option value="3">★★★☆☆ (3)</option>
+            <option value="2">★★☆☆☆ (2)</option>
+            <option value="1">★☆☆☆☆ (1)</option>
+          </select>
+        </div>
+        <div style="margin-bottom:10px;">
+          <textarea id="yorum-metin" placeholder="Yorumunuz..." required rows="3" maxlength="1000"
+                    style="width:100%; padding:8px; box-sizing:border-box;"></textarea>
+        </div>
+        <button type="submit" style="padding:10px 20px; cursor:pointer;">Gönder</button>
+        <p id="yorum-durum" style="margin-top:8px; font-size:14px;"></p>
+      </form>
+       
+      <div id="yorum-listesi" class="partners-row" style="flex-direction:column; gap:16px;">
+      <p style="opacity:.7;">Yorumlar yükleniyor...</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+  <!-- SSS -->
+  <section id="sss">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">SSS</div><h2>Sıkça Sorulan Sorular</h2></div>
+      <div class="faq">
+        
+<details>
+  <summary>Teklif almak ücretli mi?</summary>
+  <p>Teklif talepleriniz ücretsiz olarak değerlendirilir.</p>
+</details>
+
+<details>
+  <summary>Keşif hizmetiniz var mı?</summary>
+  <p>Projenin ihtiyaçlarına göre yerinde keşif ve teknik değerlendirme yapılmaktadır.</p>
+</details>
+
+<details>
+  <summary>Hangi bölgelerde hizmet veriyorsunuz?</summary>
+  <p>Hizmet bölgelerimiz hakkında detaylı bilgi almak için bizimle iletişime geçebilirsiniz.</p>
+</details>
+
+<details>
+  <summary>Teklif ne kadar sürede hazırlanıyor?</summary>
+  <p>Teklif süresi, projenin kapsamına ve teknik gereksinimlerine göre değişmektedir.</p>
+</details>
+
+<details>
+  <summary>Proje çizimi yapıyor musunuz?</summary>
+  <p>Elektrik tesisatı projelendirme ve uygulama çözümleri sunuyoruz.</p>
+</details>
+
+<details>
+  <summary>Bakım hizmeti veriyor musunuz?</summary>
+  <p>Elektrik tesisatları ve sistemleri için bakım ve kontrol hizmetleri sunuyoruz.</p>
+</details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" style="background:var(--surface); border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">İletişim</div><h2>Bize Ulaşın</h2></div>
+      <div class="contact-grid">
+        <div class="contact-list">
+          <a href="tel:+905550496104" class="contact-item"><span class="ic">☎</span><div><small>Telefon</small>+90 5550496104</div></a>
+          <a href="https://wa.me/905550496104" class="contact-item"><span class="ic">✆</span><div><small>WhatsApp</small>+90 555 049 61 04</div></a>
+          <a href="mailto:yagmurasln04@gmail.com" class="contact-item"><span class="ic">✉</span><div><small>E-posta</small>yagmurasln04@gmail.com</div></a>
+          <div class="contact-item"><span class="ic">⌖</span><div><small>Adres</small>İstanbul</div></div>
+        </div>
+        <div class="map-box">Google Haritalar embed alanı<br>(iframe ile eklenecek)</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">© 2026 D2C Elektrik. Tüm hakları saklıdır.</div></footer>
+
+<!-- PROJE MODALI -->
+
+<div id="projectModal" class="project-modal">
+
+  <div class="project-modal-content">
+
+    <button class="modal-close" onclick="closeProject()">×</button>
+
+    <div class="modal-image">
+      <img id="modalImage" src="" alt="">
+    </div>
+
+    <div class="modal-info">
+
+      <span id="modalCategory" class="project-tag"></span>
+
+      <h2 id="modalTitle"></h2>
+
+      <p id="modalDescription"></p>
+
+      <div class="project-details">
+
+        <div>
+          <span>LOKASYON</span>
+          <strong id="modalLocation"></strong>
+        </div>
+
+        <div>
+          <span>HİZMET</span>
+          <strong id="modalService"></strong>
+        </div>
+
+        <div>
+          <span>SÜRE</span>
+          <strong id="modalDuration"></strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
