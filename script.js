@@ -99,6 +99,7 @@ filterButtons.forEach(function(button) {
 });
 
     //projeler//
+const projectModal = document.getElementById("projectModal");
 
 const projects = {
 
